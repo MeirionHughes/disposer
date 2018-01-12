@@ -3,7 +3,7 @@ import { EventEmitter } from "events";
 
 export abstract class Disposable implements IDisposable {
   private _disposeList: (() => Promise<void> | void)[] = [];
-  private _events = new EventEmitter();
+  protected _events = new EventEmitter();
 
   protected addDisposer(disposable: () => Promise<void> | void) {
     if(this._disposeList === undefined){
